@@ -365,13 +365,7 @@ export default function ChatInterface({ userData }: ChatInterfaceProps) {
                   // Show data collection success message
                   const successMessage: Message = {
                     id: Date.now().toString(),
-                    content: `✅ **Data Collection Complete!**\n\n${result.message || 'Successfully collected job market data.'}\n\n📊 **Current Database Statistics:**\n• Total jobs collected: ${result.statistics?.total_jobs?.value || 0}\n• Companies in database: ${result.statistics?.by_company?.buckets?.length || 0}\n• Locations covered: ${result.statistics?.by_location?.buckets?.length || 0}\n• Industries represented: ${result.statistics?.by_industry?.buckets?.length || 0}\n\n🎯 **Analysis for "${userData.position}":**\n• High demand for ${userData.position} roles across multiple industries\n• Growing market with increasing remote opportunities\n• Competitive salary ranges with strong benefits packages\n\n**Top Companies Hiring ${userData.position}s:**\n${result.statistics?.by_company?.buckets?.slice(0, 8).map((company: any, index: number) => 
-                      `${index + 1}. **${company.key}** - ${company.doc_count} job postings`
-                    ).join('\n') || 'Data being processed...'}\n\n**Top Locations with Opportunities:**\n${result.statistics?.by_location?.buckets?.slice(0, 8).map((location: any, index: number) => 
-                      `${index + 1}. **${location.key}** - ${location.doc_count} positions`
-                    ).join('\n') || 'Data being processed...'}\n\n**Experience Levels Distribution:**\n${result.statistics?.by_experience_level?.buckets?.map((level: any) => 
-                      `• **${level.key}**: ${level.doc_count} positions`
-                    ).join('\n') || 'Data being processed...'}\n\n**💡 Strategic Recommendations:**\n1. **Optimize your LinkedIn profile** for ${userData.position} keywords\n2. **Build a strong portfolio** showcasing relevant projects\n3. **Network actively** in ${userData.position} communities\n4. **Stay updated** with latest industry trends and technologies\n5. **Consider certifications** to boost your credentials\n6. **Target remote-first companies** for better work-life balance\n\n**📈 Market Outlook:** The ${userData.position} market is expected to grow 15-20% annually over the next 3 years, with increasing demand for specialized skills and remote capabilities.\n\n⚠️ **Note:** You can only run this analysis once per profile. To run it again, reset your profile first.`,
+                    content: `✅ **Scraping Successfully Ended!**\n\nJob market data has been collected and is now available in the database. You can now ask questions about job opportunities, market trends, or career advice for your ${userData.position} role.\n\nWhat would you like to know?`,
                     isUser: false,
                     timestamp: new Date(),
                     metadata: { careerAdvice: true }
